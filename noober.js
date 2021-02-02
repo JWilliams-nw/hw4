@@ -7,43 +7,33 @@ async function pageLoaded() {
   
   // 🔥 start here: write code to loop through the ride
   let OutputElement = document.querySelector('.rides')
+  
   for (let i=0; i < json.length; i++){
   
-    if(json[i].length > 1) {  
-    levelOfService = "Noober Pool" 
-    OutputElement.insertAdjacentHTML("beforeend", `
+  let  rides = json[i]
+  let renderrides = function(rides) {
+  
+    OutputElement.insertAdjacentHTML("beforeend",`
     <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
     <i class="fas fa-car-side"></i>
     <span>${levelOfService}</span>
     </h1>`)
-    
+  }
+
+    if(json[i].length > 1) {  
+    levelOfService = "Noober Pool" 
+    renderrides(rides)
     }
     else if (json[i][0].purpleRequested == true) {
     levelOfService = "Noober Purple" 
-    OutputElement.insertAdjacentHTML("beforeend", `
-    <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-    <i class="fas fa-car-side"></i>
-    <span>${levelOfService}</span>
-    </h1>`)
-    
+    renderrides(rides)
     }
     else if (json[i][0].numberOfPassengers > 3) {
     levelOfService = 'Noober XL'  
-    OutputElement.insertAdjacentHTML("beforeend", `
-    <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-    <i class="fas fa-car-side"></i>
-    <span>${levelOfService}</span>
-    </h1>`)
-    
+    renderrides(rides)
     }
     else {
-    levelOfService = 'Noober X'
-    OutputElement.insertAdjacentHTML("beforeend", `
-    <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-    <i class="fas fa-car-side"></i>
-    <span>${levelOfService}</span>
-    </h1>`)
-    
+    renderrides(rides)
     }
     
     
