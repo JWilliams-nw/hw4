@@ -8,6 +8,7 @@ async function pageLoaded() {
   // 🔥 start here: write code to loop through the ride
   let OutputElement = document.querySelector('.rides')
   
+  
   for (let i=0; i < json.length; i++){
   
     if(json[i].length > 1) {  
