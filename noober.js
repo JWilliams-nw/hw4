@@ -10,33 +10,38 @@ async function pageLoaded() {
   
   for (let i=0; i < json.length; i++){
   
-  let  rides = json[i]
-  let renderrides = function(rides) {
-  
+    if(json[i].length > 1) {  
+    levelOfService = "Noober Pool" 
     OutputElement.insertAdjacentHTML("beforeend",`
     <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
     <i class="fas fa-car-side"></i>
     <span>${levelOfService}</span>
     </h1>`)
-  }
-
-    if(json[i].length > 1) {  
-    levelOfService = "Noober Pool" 
-    renderrides(rides)
     }
     else if (json[i][0].purpleRequested == true) {
     levelOfService = "Noober Purple" 
-    renderrides(rides)
+    OutputElement.insertAdjacentHTML("beforeend",`
+    <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+    <i class="fas fa-car-side"></i>
+    <span>${levelOfService}</span>
+    </h1>`)
     }
     else if (json[i][0].numberOfPassengers > 3) {
     levelOfService = 'Noober XL'  
-    renderrides(rides)
+    OutputElement.insertAdjacentHTML("beforeend",`
+    <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+    <i class="fas fa-car-side"></i>
+    <span>${levelOfService}</span>
+    </h1>`)
     }
     else {
-    renderrides(rides)
+    levelOfService = 'Noober X'  
+    OutputElement.insertAdjacentHTML("beforeend",`
+    <h1 class="inline-block mt-8 px-4 py-2 rounded-xl text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+    <i class="fas fa-car-side"></i>
+    <span>${levelOfService}</span>
+    </h1>`)
     }
-    
-    
     
     for(let p=0; p < json[i].length;p++){
       passengerName = json[i][p].passengerDetails.first + ' ' + json[i][p].passengerDetails.last
